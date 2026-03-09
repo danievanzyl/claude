@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "~/code"
+    ],
+    "allow": [
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(rg:*)",
+      "Bash(fd:*)",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "WebSearch",
+      "WebFetch",
+      "Skill(gh-github)",
+      "Skill(deploy)",
+      "Skill(docker-ssh)",
+      "Bash(curl:*)",
+      "Bash(bun run:*)",
+      "Bash(bun test:*)",
+      "Bash(bunx:*)",
+      "Bash(bun install:*)",
+      "Bash(ssh:*)",
+      "Bash(ls:*)",
+      "Bash(sed:*)"
+    ]
+  },
+  "hooks": {
+    "SessionEnd": []
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bun ~/.claude/statusline.ts"
+  },
+  "enabledPlugins": {
+    "context7-plugin@context7-marketplace": true
+  }
+}

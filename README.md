@@ -1,0 +1,30 @@
+# Claude Code Config
+
+Personal configuration for [Claude Code](https://claude.ai/claude-code) — Anthropic's CLI for Claude.
+
+## Structure
+
+| Path | Description |
+|------|-------------|
+| `CLAUDE.md` | Global instructions applied to all sessions |
+| `agents/` | Custom sub-agent definitions (codebase-analyzer, codebase-locator, etc.) |
+| `skills/` | Reusable skill definitions (gh-github, tf-style-guide, etc.) |
+| `commands/` | Custom slash commands |
+| `settings.json` | Claude Code settings |
+| `hooks/` | Hook configurations |
+| `plugins/` | Plugin configurations |
+
+## Agents
+
+- **codebase-analyzer** — Analyzes implementation details with file:line references
+- **codebase-locator** — Locates files and directories relevant to a feature
+- **codebase-pattern-finder** — Finds similar implementations and usage patterns
+- **gh-search-researcher** — Researches GitHub repos, PRs, issues via `gh` CLI
+- **thoughts-analyzer** — Deep dives on research topics
+- **thoughts-locator** — Discovers relevant documents in thoughts directories
+- **web-search-researcher** — Researches topics via web search
+- **swift-expect** — Swift development specialist
+
+## License
+
+Free to use.
