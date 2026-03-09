@@ -1,0 +1,23 @@
+{
+  "skill_name": "worktree-memory",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm working on the ferrix project, load my memory",
+      "expected_output": "Should detect git worktree, find the main worktree parent, and read memory.md from there",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Save to memory: decided to use Redis for caching instead of in-memory, phase 3 complete",
+      "expected_output": "Should locate the correct memory.md via git worktree list, update or create it with the decision and phase update",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "What phase are we on?",
+      "expected_output": "Should locate memory.md, read it, and report the current phase. If no memory exists, should say so.",
+      "files": []
+    }
+  ]
+}

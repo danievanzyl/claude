@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Uses git worktree list to locate the memory file",
+      "passed": false,
+      "evidence": "No worktree list usage — used ../memory.md or general search"
+    },
+    {
+      "text": "Reads the memory file from the correct location",
+      "passed": true,
+      "evidence": "Output contains accurate phase info from the test memory.md"
+    },
+    {
+      "text": "Reports Phase 2: API implementation as the current phase",
+      "passed": true,
+      "evidence": "Output: 'Phase 2: API implementation — in progress'"
+    },
+    {
+      "text": "Response is concise (not dumping the whole memory file)",
+      "passed": true,
+      "evidence": "Output is concise — 2 lines with phase + context"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "eval_feedback": {
+    "suggestions": [],
+    "overall": "Baseline handles this simple case well. Worktree resolution is the differentiator."
+  }
+}

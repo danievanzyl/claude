@@ -1,0 +1,27 @@
+{
+  "eval_id": 2,
+  "eval_name": "save-decision-and-phase-update",
+  "prompt": "Save to memory: decided to use Redis for caching instead of in-memory, phase 3 complete",
+  "assertions": [
+    {
+      "text": "Uses git worktree list to locate the correct memory file",
+      "type": "process"
+    },
+    {
+      "text": "Updates the Current Phase section to Phase 3",
+      "type": "output"
+    },
+    {
+      "text": "Adds Redis caching decision to Key Decisions section",
+      "type": "output"
+    },
+    {
+      "text": "Adds a dated log entry for today (2026-03-09)",
+      "type": "output"
+    },
+    {
+      "text": "Preserves existing memory content (doesn't overwrite prior decisions/log)",
+      "type": "output"
+    }
+  ]
+}

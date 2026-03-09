@@ -1,9 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits",
-    "additionalDirectories": [
-      "~/code"
-    ],
     "allow": [
       "Bash(gh:*)",
       "Bash(git:*)",
@@ -25,6 +21,10 @@
       "Bash(ssh:*)",
       "Bash(ls:*)",
       "Bash(sed:*)"
+    ],
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "~/code"
     ]
   },
   "hooks": {
@@ -35,6 +35,7 @@
     "command": "bun ~/.claude/statusline.ts"
   },
   "enabledPlugins": {
-    "context7-plugin@context7-marketplace": true
+    "context7-plugin@context7-marketplace": true,
+    "skill-creator@claude-plugins-official": true
   }
 }

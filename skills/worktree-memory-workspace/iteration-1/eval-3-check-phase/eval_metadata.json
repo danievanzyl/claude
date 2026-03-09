@@ -1,0 +1,23 @@
+{
+  "eval_id": 3,
+  "eval_name": "check-current-phase",
+  "prompt": "What phase are we on?",
+  "assertions": [
+    {
+      "text": "Uses git worktree list to locate the memory file",
+      "type": "process"
+    },
+    {
+      "text": "Reads the memory file from the correct location",
+      "type": "output"
+    },
+    {
+      "text": "Reports Phase 2: API implementation as the current phase",
+      "type": "output"
+    },
+    {
+      "text": "Response is concise (not dumping the whole memory file)",
+      "type": "output"
+    }
+  ]
+}
