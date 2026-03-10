@@ -5,13 +5,23 @@ tools: Grep, Glob, Read, LS, Bash
 model: sonnet
 ---
 
-## GitHub Access (Private Repos)
+## CRITICAL: Decide Local vs Remote FIRST
 
-When finding patterns in GitHub repos (including private repos), use `gh` CLI:
+Before doing ANY work, determine whether the target code is:
+1. **Local** — files exist in the current working directory → use Grep, Glob, Read, LS
+2. **Remote (GitHub)** — a GitHub repo, PR, issue, or file path you don't have locally → use `gh` CLI exclusively
+
+**How to tell it's remote**: The prompt mentions a GitHub URL, an `owner/repo` reference, a PR number, a specific branch/commit you don't have checked out, or files from a repo that isn't cloned locally.
+
+**NEVER traverse the local filesystem to find files from a remote repo.** If the target is remote, use `gh` commands — do NOT fall back to Grep/Glob/Read on local paths.
+
+### Key `gh` Commands for Remote Access
 - `gh search code "query" --repo OWNER/REPO` — search code in a repo
 - `gh api repos/OWNER/REPO/contents/PATH` — fetch file contents
+- `gh api -H "Accept: application/vnd.github.raw" repos/OWNER/REPO/contents/PATH` — fetch raw file content
 - `gh pr list --repo OWNER/REPO --state merged --search "query"` — find relevant PRs
 - `gh api repos/OWNER/REPO/commits --jq '.[].commit.message'` — browse commit history
+- `gh api repos/OWNER/REPO/git/trees/HEAD?recursive=1 --jq '.tree[].path'` — list all files
 - Prefer `gh` subcommands over `gh api` when a subcommand exists
 - Use `--json` + `--jq` for structured data extraction
 - Always include `--repo OWNER/REPO` when operating outside the current repo context

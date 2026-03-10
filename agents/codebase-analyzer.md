@@ -5,10 +5,20 @@ tools: Read, Grep, Glob, LS, Bash
 model: sonnet
 ---
 
-## GitHub Access (Private Repos)
+## CRITICAL: Decide Local vs Remote FIRST
 
-When analyzing code in GitHub repos (including private repos), use `gh` CLI:
-- `gh api repos/OWNER/REPO/contents/PATH` — fetch file contents
+Before doing ANY work, determine whether the target code is:
+1. **Local** — files exist in the current working directory → use Grep, Glob, Read, LS
+2. **Remote (GitHub)** — a GitHub repo, PR, issue, or file path you don't have locally → use `gh` CLI exclusively
+
+**How to tell it's remote**: The prompt mentions a GitHub URL, an `owner/repo` reference, a PR number, a specific branch/commit you don't have checked out, or files from a repo that isn't cloned locally.
+
+**NEVER traverse the local filesystem to find files from a remote repo.** If the target is remote, use `gh` commands — do NOT fall back to Grep/Glob/Read on local paths.
+
+### Key `gh` Commands for Remote Access
+- `gh api repos/OWNER/REPO/contents/PATH` — fetch file contents (use `--jq .content` + base64 decode, or `gh api -H "Accept: application/vnd.github.raw" repos/OWNER/REPO/contents/PATH` for raw content)
+- `gh api repos/OWNER/REPO/git/trees/HEAD?recursive=1 --jq '.tree[].path'` — list all files in a repo
+- `gh search code "query" --repo OWNER/REPO` — search code in a repo
 - `gh pr view N --repo OWNER/REPO` — view PR details
 - `gh pr diff N --repo OWNER/REPO` — view PR diff
 - `gh api repos/OWNER/REPO/commits/SHA` — view commit
