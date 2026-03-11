@@ -1,0 +1,82 @@
+[
+  {
+    "query": "hey can you check my obsidian vault for any notes about the auth migration we did last month",
+    "should_trigger": true
+  },
+  {
+    "query": "create a meeting note for today's standup — we talked about the redis caching strategy and next steps for the API refactor",
+    "should_trigger": true
+  },
+  {
+    "query": "add a task to my vault: finish the terraform module for the new VPC, due friday",
+    "should_trigger": true
+  },
+  {
+    "query": "what did we decide about the database schema? I think there's an ADR somewhere",
+    "should_trigger": true
+  },
+  {
+    "query": "update my daily note with what we just did — fixed the CI pipeline and deployed v2.3",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to log this architecture decision about switching from REST to gRPC",
+    "should_trigger": true
+  },
+  {
+    "query": "search my vault for anything related to the kubernetes deployment",
+    "should_trigger": true
+  },
+  {
+    "query": "what's the status of the payments project? check my notes",
+    "should_trigger": true
+  },
+  {
+    "query": "open my obsidian daily note and add the action items from our planning session",
+    "should_trigger": true
+  },
+  {
+    "query": "before we start on this feature, check if there are any existing notes or decisions about the notification system",
+    "should_trigger": true
+  },
+  {
+    "query": "read the README.md file in this repo",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to set up a new markdown documentation site with docusaurus",
+    "should_trigger": false
+  },
+  {
+    "query": "help me write a daily standup update message for slack",
+    "should_trigger": false
+  },
+  {
+    "query": "create a CHANGELOG.md for this project",
+    "should_trigger": false
+  },
+  {
+    "query": "search the codebase for any references to the auth middleware",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to take notes during a meeting — can you help me format them as markdown?",
+    "should_trigger": false
+  },
+  {
+    "query": "what decisions were made in PR #245? check the github discussion",
+    "should_trigger": false
+  },
+  {
+    "query": "help me organize my project's docs/ folder with better structure",
+    "should_trigger": false
+  },
+  {
+    "query": "write an ADR template that I can use in my repo's docs directory",
+    "should_trigger": false
+  },
+  {
+    "query": "track this bug — the login page crashes on Safari 17",
+    "should_trigger": false
+  }
+]
