@@ -1,0 +1,23 @@
+{
+  "skill_name": "jira-acli",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What tickets am I working on?",
+      "expected_output": "A formatted table of CPE tickets assigned to the user with key, summary, status, and priority columns",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Create a sub-task on CPE-2665 for updating the documentation",
+      "expected_output": "Creates a Sub-task type ticket with parent CPE-2665, summary about updating documentation, assigned to @me, and reports the created ticket key",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Summarise the PR for this ticket",
+      "expected_output": "Infers ticket from branch, finds the PR via gh, generates a TLDR summary, and posts it as a Jira comment with the PR link",
+      "files": []
+    }
+  ]
+}
