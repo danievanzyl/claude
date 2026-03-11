@@ -70,6 +70,34 @@ obsidian daily:append content="## Meeting: Auth Migration\n- Decided on JWT appr
 obsidian daily
 ```
 
+### Updating Existing Files
+
+There is no `edit` command. To modify existing files, use these approaches:
+
+```bash
+# REPLACE entire file — read first, then overwrite with updated content
+obsidian read path="Projects/Formae/tracker.md"
+obsidian create path="Projects/Formae/tracker.md" overwrite content="---\ntype: tracker\n..."
+
+# APPEND to end of file
+obsidian append path="Projects/Formae/tracker.md" content="\n## New Section\n- item 1"
+
+# PREPEND to start of file
+obsidian prepend path="Projects/Formae/tracker.md" content="# Header\n"
+
+# SET/UPDATE a frontmatter property without rewriting the file
+obsidian property:set path="Projects/Formae/tracker.md" name="status" value="active"
+obsidian property:set path="Projects/Formae/tracker.md" name="updated" value="2026-03-11"
+
+# REMOVE a frontmatter property
+obsidian property:remove path="Projects/Formae/tracker.md" name="draft"
+```
+
+**When to use which:**
+- **Small addition** at end/start → `append` / `prepend` (fastest, no read needed)
+- **Property change only** → `property:set` (surgical, no content rewrite)
+- **Structural changes** (reorder sections, edit middle of file) → `read` then `create ... overwrite` (read the full file first, construct updated content, replace)
+
 ### Tasks
 
 ```bash
