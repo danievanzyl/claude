@@ -12,7 +12,6 @@ Personal configuration for [Claude Code](https://claude.ai/claude-code) — Anth
 | `commands/` | Custom slash commands |
 | `settings.json` | Claude Code settings |
 | `hooks/` | Hook configurations |
-| `plugins/` | Plugin configurations |
 
 ## Agents
 
@@ -25,6 +24,6 @@ Personal configuration for [Claude Code](https://claude.ai/claude-code) — Anth
 - **web-search-researcher** — Researches topics via web search
 - **swift-expect** — Swift development specialist
 
-## License
+## Credits
 
-Free to use.
+Many of the skills and commands in this config are based on [HumanLayer's](https://github.com/humanlayer/humanlayer) workflow patterns.
