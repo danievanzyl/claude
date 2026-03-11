@@ -15,6 +15,14 @@ allowed-tools: Bash(acli *), Bash(git *), Bash(gh *), Read, Grep, Glob
 
 Interact with Jira using `acli jira` commands. The primary project is **CPE** on board **96**.
 
+## Critical: Command Format
+
+All ticket operations go through `acli jira workitem <subcommand>`. Do NOT use legacy commands like `acli jira createSubtask`, `acli jira createIssue`, etc. — they do not exist.
+
+The issue type for subtasks is `Subtask` (one word, no hyphen). NOT `Sub-task`, NOT `sub-task`.
+
+Use ONLY the exact commands documented in this skill. Do not guess or improvise acli commands.
+
 ## Ticket Number Inference
 
 When the user doesn't supply a ticket number, infer it from the current git branch:
@@ -170,5 +178,7 @@ For single ticket views, show key fields: **Key**, **Summary**, **Status**, **As
 - Always use `--yes` flag on transitions to avoid interactive prompts.
 - Never transition a ticket without confirming the target status with the user first, unless the intent is unambiguous (e.g., "move CPE-1234 to done").
 - When creating tickets, confirm summary/type/parent with the user before executing.
-- If `acli` commands fail with auth errors, tell the user to check their acli configuration.
+- If any `acli` command fails with an authentication or token error (e.g., `401`, `unauthorized`, `token expired`, `session expired`), stop immediately and tell the user: **"Your Jira auth has expired. Run `acli auth login` to reauthenticate, then try again."** Do not retry the command or attempt any other acli operations until the user confirms they've re-authenticated.
 - Prefer `@me` over email addresses for assignment.
+- ONLY use `acli jira workitem` subcommands. Never use `acli jira createSubtask`, `acli jira createIssue`, or any other top-level jira commands — they don't work.
+- The subtask type is `Subtask` (one word). Never use `Sub-task`.
