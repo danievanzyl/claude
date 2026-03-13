@@ -54,9 +54,9 @@ acli jira sprint list-workitems --board 96 --sprint <SPRINT_ID> \
 
 To find the active sprint ID, list sprints first:
 ```bash
-acli jira board list-sprints --board 96 --json
+acli jira board list-sprints --id 96 --state active --json
 ```
-Pick the sprint with `state: "active"`.
+The sprint ID is in the `sprints[].id` field.
 
 ### View Ticket Details
 
@@ -82,6 +82,11 @@ Statuses are board-dependent. If a transition fails, the target status may not b
 
 ### Create a New Ticket
 
+When creating a ticket, confirm these with the user before executing:
+1. **Summary** and **type**
+2. **Sprint** — ask if it should be added to the current sprint
+
+If sprint is not needed, use the simple CLI form:
 ```bash
 acli jira workitem create \
   --project CPE \
@@ -92,9 +97,35 @@ acli jira workitem create \
   --json
 ```
 
-Valid types: **Task**, **Epic**, **Subtask**, **Story**, **Bug**, **Dependency**, **Critical**.
+If the ticket should go into the current sprint, use `--from-json` so you can set the sprint via `additionalAttributes`. First find the active sprint ID:
+```bash
+acli jira board list-sprints --id 96 --state active --json
+```
 
-When creating, always confirm the summary and type with the user before running the command.
+Then create with the sprint field:
+```bash
+cat > /tmp/jira-create.json << EOF
+{
+  "projectKey": "CPE",
+  "type": "Task",
+  "summary": "Short description of the work",
+  "description": {
+    "type": "doc",
+    "version": 1,
+    "content": [{"type": "paragraph", "content": [{"type": "text", "text": "Detailed description"}]}]
+  },
+  "assignee": "@me",
+  "additionalAttributes": {
+    "customfield_10020": SPRINT_ID
+  }
+}
+EOF
+acli jira workitem create --from-json /tmp/jira-create.json --json
+```
+
+Replace `SPRINT_ID` with the numeric sprint ID (e.g., `8156`). The `customfield_10020` is the standard Jira Cloud sprint field.
+
+Valid types: **Task**, **Epic**, **Subtask**, **Story**, **Bug**, **Dependency**, **Critical**.
 
 ### Create a Sub-task
 
